@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green-API Test Task</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Green-API Test Task</h1>
+        <form id="greenApiForm">
+            <div class="form-group">
+                <label for="idInstance">idInstance:</label>
+                <input type="text" class="form-control" id="idInstance" required>
+            </div>
+            <div class="form-group">
+                <label for="apiTokenInstance">apiTokenInstance:</label>
+                <input type="text" class="form-control" id="apiTokenInstance" required>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" id="getSettingsBtn">Get Settings</button>
+                <button type="button" class="btn btn-primary" id="getStateInstanceBtn">Get State Instance</button>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" class="form-control" id="phoneNumber" placeholder="77771234567" required>
+                <label for="messageText">Message:</label>
+                <input type="text" class="form-control" id="messageText" value="Hello world!" required>
+                <button type="button" class="btn btn-success mt-2" id="sendMessageBtn">Send Message</button>
+            </div>
+            <div class="form-group">
+                <label for="filePhoneNumber">Phone Number for File:</label>
+                <input type="tel" class="form-control" id="filePhoneNumber" placeholder="77076665544" required>
+                <label for="fileUrl">File URL:</label>
+                <input type="url" class="form-control" id="fileUrl" placeholder="https://example.com/image.png" required>
+                <label for="fileName">File Name:</label>
+                <input type="text" class="form-control" id="fileName" placeholder="file.png" required>
+                <button type="button" class="btn btn-success mt-2" id="sendFileByUrlBtn">Send File by URL</button>
+            </div>
+            <div class="form-group">
+                <label for="responseOutput">Response:</label>
+                <textarea class="form-control" id="responseOutput" rows="10" readonly></textarea>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
