@@ -10,7 +10,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const apiUrl = 'https://7103.api.greenapi.com/waInstance';
 
+    if (localStorage.getItem('idInstance')) {
+        idInstanceInput.value = localStorage.getItem('idInstance');
+    }
+    if (localStorage.getItem('apiTokenInstance')) {
+        apiTokenInstanceInput.value = localStorage.getItem('apiTokenInstance');
+    }
+
+    idInstanceInput.addEventListener('input', () => {
+        localStorage.setItem('idInstance', idInstanceInput.value);
+    });
+
+    apiTokenInstanceInput.addEventListener('input', () => {
+        localStorage.setItem('apiTokenInstance', apiTokenInstanceInput.value);
+    });
+
     const getFormattedResponse = (response) => JSON.stringify(response, null, 2);
+
+    const adjustOutputHeight = () => {
+        responseOutput.style.height = 'auto';
+        responseOutput.style.height = responseOutput.scrollHeight + 'px';
+    };
 
     getSettingsBtn.addEventListener('click', () => {
         const idInstance = idInstanceInput.value;
@@ -19,9 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
         axios.get(`${apiUrl}${idInstance}/getSettings/${apiTokenInstance}`)
             .then(response => {
                 responseOutput.value = getFormattedResponse(response.data);
+                adjustOutputHeight();
             })
             .catch(error => {
                 responseOutput.value = `Error: ${error.message}`;
+                adjustOutputHeight();
             });
     });
 
@@ -32,9 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
         axios.get(`${apiUrl}${idInstance}/getStateInstance/${apiTokenInstance}`)
             .then(response => {
                 responseOutput.value = getFormattedResponse(response.data);
+                adjustOutputHeight();
             })
             .catch(error => {
                 responseOutput.value = `Error: ${error.message}`;
+                adjustOutputHeight();
             });
     });
 
@@ -52,9 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
         axios.post(`${apiUrl}${idInstance}/sendMessage/${apiTokenInstance}`, data)
             .then(response => {
                 responseOutput.value = getFormattedResponse(response.data);
+                adjustOutputHeight();
             })
             .catch(error => {
                 responseOutput.value = `Error: ${error.message}`;
+                adjustOutputHeight();
             });
     });
 
@@ -74,9 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
         axios.post(`${apiUrl}${idInstance}/sendFileByUrl/${apiTokenInstance}`, data)
             .then(response => {
                 responseOutput.value = getFormattedResponse(response.data);
+                adjustOutputHeight();
             })
             .catch(error => {
                 responseOutput.value = `Error: ${error.message}`;
+                adjustOutputHeight();
             });
     });
 });
+
